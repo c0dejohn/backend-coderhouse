@@ -1,9 +1,4 @@
 class Usuario {
-  nombre: String
-  apellido: String
-  libros: Object[]
-  mascotas: Object[]
-
   constructor(nombre, apellido, libros, mascotas) {
     this.nombre = nombre
     this.apellido = apellido

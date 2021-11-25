@@ -13,7 +13,7 @@ class Usuario {
   }
 
   addMascota(mascota) {
-    this.mascotas.push(mascota)
+    return this.mascotas.push(mascota)
   }
 
   countMascota() {
@@ -28,6 +28,7 @@ class Usuario {
     return this.libros.map((book) => book.nombre)
   }
 }
+
 let usuario = new Usuario(
   'John',
   'Manyoma',
@@ -35,8 +36,8 @@ let usuario = new Usuario(
   ['gato']
 )
 
-usuario.getFullName()
-usuario.addMascota('perro')
-usuario.countMascota()
-usuario.addBook('Sherlock Holmes', 'Arthur Conan Doyle')
-usuario.getBookNames()
+console.log(usuario.getFullName())
+console.log(usuario.addMascota('perro'))
+console.log(usuario.countMascota())
+console.log(usuario.addBook('Sherlock Holmes', 'Arthur Conan Doyle'))
+console.log(usuario.getBookNames())

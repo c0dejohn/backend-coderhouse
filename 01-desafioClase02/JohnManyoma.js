@@ -7,9 +7,9 @@ class Usuario {
   }
 
   getFullName() {
-    return console.log(`
+    return `
       Nombres: ${this.nombre}
-      Apellidos: ${this.apellido}`)
+      Apellidos: ${this.apellido}`
   }
 
   addMascota(mascota) {
@@ -17,15 +17,15 @@ class Usuario {
   }
 
   countMascota() {
-    return console.log(this.mascotas.length)
+    return this.mascotas.length
   }
 
   addBook(book, autor) {
-    this.libros.push({ nombre: book, autor: autor })
+    return this.libros.push({ nombre: book, autor: autor })
   }
 
   getBookNames() {
-    return console.log(Object.values(this.libros))
+    return this.libros.map((book) => book.nombre)
   }
 }
 let usuario = new Usuario(

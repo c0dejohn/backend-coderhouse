@@ -12,4 +12,4 @@ npm run start
 
 colección disponible para pruebas
 
-[json](./static/desafio8.postman_collection.json)
+[json](./public/desafio8.postman_collection.json)

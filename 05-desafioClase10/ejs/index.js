@@ -1,14 +1,20 @@
 const express = require('express')
+
+const path = require('path')
 const app = express()
 const apiRouter = require('./routes/productos.routes')
-const PORT = 8080
-
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.use('/static', express.static(__dirname + '/public'))
+app.engine('ejs', require('ejs').__express)
 
-app.use('/api', apiRouter)
+app.set('views', './views/')
+app.set('view engine', 'ejs')
+
+app.use('/', apiRouter)
+app.use(express.static('public'))
+
+const PORT = 8080
 
 app.listen(PORT, (err) => {
   if (err) {

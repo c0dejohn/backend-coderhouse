@@ -5,7 +5,6 @@ const app = express()
 const apiRouter = require('./routes/productos.routes')
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-//handlebars settings
 
 app.engine('pug', require('pug').__express)
 

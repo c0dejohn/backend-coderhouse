@@ -17,11 +17,14 @@
         <th><%= item.id %></th>
         <th><%= item.title %></th>
         <th><%= item.price %></th>
-        <th><%= item.thumbnail %></th>
+        <th>
+          <img width="40" height="40" src="<%=item.thumbnail %>" alt="image" />
+        </th>
       </tr>
       <% }) %>
     </tbody>
   </table>
+  <a href="/" class="btn btn-info mt-3 mb-5"> Ir a formulario </a>
 </div>
 <% } else { %>
 <h3 class="alert alert-danger">No se encontraron productos</h3>

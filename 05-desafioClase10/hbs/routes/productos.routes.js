@@ -1,33 +1,18 @@
 const express = require('express')
-const { redirect } = require('express/lib/response')
 const apiRouter = express.Router()
 
-const Producto = require('../controller/productos.js')
+const productController = require('../controller/product.controller.js')
 
-apiRouter.get('/productos', (req, res) => {
-  res.render('index', { productos: Producto.listarProducto })
-})
+apiRouter.get('/', productController.MostrarFormulario)
 
-apiRouter.post('/productos', (req, res) => {
-  let toAdd = req.body
-  Producto.nuevoProducto(toAdd)
-  res.redirect('productos')
-})
+apiRouter.get('/productos', productController.listarProducto)
 
-apiRouter.get('/productos/:id', (req, res) => {
-  let id = req.params.id
-  res.status(200).json(Producto.mostrarProducto(id))
-})
+apiRouter.post('/productos', productController.nuevoProducto)
 
-apiRouter.put('/productos/:id', (req, res) => {
-  let toChange = req.body
-  let id = req.params.id
-  res.status(200).json(Producto.actualizarProducto(toChange, id))
-})
+apiRouter.get('/productos/:id', productController.mostrarProducto)
 
-apiRouter.delete('/productos/:id', (req, res) => {
-  let id = req.params.id
-  res.status(200).json(Producto.eliminarProducto(id))
-})
+apiRouter.put('/productos/:id', productController.actualizarProducto)
+
+apiRouter.delete('/productos/:id', productController.eliminarProducto)
 
 module.exports = apiRouter

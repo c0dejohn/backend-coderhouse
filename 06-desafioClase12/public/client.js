@@ -11,29 +11,29 @@ var template = Handlebars.compile(`
 {{/each}}
 `);
 
-socket.on('productos', (data) => {
-	console.log('todos' + JSON.stringify(data));
-	$('#innerBody').html(template({ productos: data.productos }));
+socket.on("productos", (data) => {
+	console.log("todos" + JSON.stringify(data));
+	$("#innerBody").html(template({ productos: data.productos }));
 });
-const $bodyData = document.getElementById('innerBody');
-const $titleData = document.getElementById('title');
-const $priceData = document.getElementById('price');
-const $thumbnailData = document.getElementById('thumbnail');
-const $btnId = document.getElementById('btnId');
+const $bodyData = document.getElementById("innerBody");
+const $titleData = document.getElementById("title");
+const $priceData = document.getElementById("price");
+const $thumbnailData = document.getElementById("thumbnail");
+const $btnId = document.getElementById("btnId");
 
 const enviarProducto = () => {
-	console.log('productos');
+	console.log("productos");
 	const data = {
 		title: $titleData.value,
 		price: $priceData.value,
 		thumbnail: $thumbnailData.value
 	};
-	socket.emit('producto', data);
+	socket.emit("producto", data);
 };
 
-if ($btnId) $btnId.addEventListener('click', enviarProducto);
+if ($btnId) $btnId.addEventListener("click", enviarProducto);
 
-socket.on('mensajes', function (dato) {
+socket.on("mensajes", function (dato) {
 	render(dato);
 });
 
@@ -46,14 +46,14 @@ function render(dato) {
               <em class="text-success">${element.text}</em>
               </div>`;
 		})
-		.join('');
-	document.getElementById('messages').innerHTML = html;
+		.join("");
+	document.getElementById("messages").innerHTML = html;
 }
 
 function addMessages() {
 	var mensaje = {
-		author: document.getElementById('author').value,
-		text: document.getElementById('text').value
+		author: document.getElementById("author").value,
+		text: document.getElementById("text").value
 	};
-	socket.emit('new-message', mensaje);
+	socket.emit("new-message", mensaje);
 }

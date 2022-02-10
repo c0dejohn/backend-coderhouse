@@ -2,12 +2,11 @@ const db = require("../database/db");
 
 module.exports = class MessageService {
 	async create(user, text) {
-		const [id] = await db("message")
-			.insert({
-				user,
-				text
-			})
-			.returning("id");
+		const [id] = await db("message").insert({
+			user,
+			text
+		});
+		//.returning("id");
 		return id;
 	}
 

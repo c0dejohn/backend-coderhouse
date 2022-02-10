@@ -7,12 +7,12 @@ const server = require("http").Server(app);
 const io = require("socket.io")(server);
 const moment = require("moment");
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use("/", apiRouter);
 app.use("/static", express.static("/public"));
 app.set("views", path.join(__dirname, "views"));
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 app.use("/public", express.static(__dirname + "/public"));
 

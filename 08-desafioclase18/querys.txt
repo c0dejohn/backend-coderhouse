@@ -1,0 +1,78 @@
+
+
+show dbs
+
+use ecommerce
+
+1 y 2)
+--productos--
+
+db.productos.insert({nombre:'Lenovo Legion 5 15 Gaming Latop',cateogria:'Computadores', stock: 100, precio: 1100 })
+
+db.productos.insert({nombre:'Seagate Backup Plus Disco duro externo 4TB',cateogria:'Accesorios tecnología', stock: 30, precio: 100 })
+
+db.productos.insert({nombre:'Roku Express 4K+ 2021 | Reproductor multimedia de streaming HD/4K/HDR ',cateogria:'Accesorios tecnología', stock: 15, precio: 200 })
+
+db.productos.insert({nombre:'ZOTAC Gaming GeForce RTX 3060 Twin Edge OC 12GB GDDR6 192-bit 15 Gbps PCIE 4.0 tarjeta gráfica para juegos',cateogria:'Accesorios tecnología', stock: 55, precio: 1000 })
+
+db.productos.insert({nombre:'Auricular USB H390 ClearChat Comfort de sony',cateogria:'Accesorios tecnología', stock: 15, precio:100 })
+
+db.productos.insert({nombre:'Sceptre 20 "1600x900 75Hz Monitor LED ultradelgado 2x HDMI VGA',cateogria:'Accesorios tecnología', stock: 10, precio: 104 })
+
+db.productos.insert({nombre:'Portátil Acer Aspire 5 Slim A515-46-R14K',cateogria:'Computadores', stock: 40, precio: 600 })
+
+db.productos.insert({nombre:Acer Nitro 5 AN515-54-5812 Gaming Latop',cateogria:'Computadores', stock: 30, precio: 1200 })
+
+db.productos.insert({nombre:'Apple MacBook Air MD760LL/A 13,3 pulgadas',cateogria:'Computadores', stock: 15, precio: 1500 })
+
+db.productos.insert({nombre:'Portatil Gamer Asus Rog Zephyrus Duo Se 15 Ryzen 7 Rtx 3060',cateogria:'Computadores', stock: 50, precio: 4400 })
+
+--mensajes--
+
+db.mensajes.insert({ author: 'Juan', text: '¡Hola! que tal?' })
+
+db.mensajes.insert({ author: 'Ana', text: 'Muy bien y vos?' })
+
+db.mensajes.insert({ author: 'JohnDoe', text: 'Dos preguntas ¿tiene la letra Ñ? y ¿se puede cambiar el SSD?' })
+
+db.mensajes.insert({ author: 'admin', text: 'Hola, gracias por preguntar, te comentamos que es un gusto saber de ti, tu mensaje fue recibido y será tramitado por uno de nuestro agentes en las próximas horas. Te deseamos un excelente dia.' })
+
+db.mensajes.insert({ author: 'Ana', text: 'Buen día, cordial saludo. Quisiera comprar una unidad, por cuál transportadora realizan el envío?' })
+
+db.mensajes.insert({ author: 'admin', text: 'Hola, estamos haciendo entregas con western union y dependemos de la logística de ellos. Gracias por escribirnos, esperamos que puedas realizar tu compra' })
+
+db.mensajes.insert({ author: 'pipe', text: 'Disculpe lo puedo comprar para recogerlo hoy mismo?' })
+
+db.mensajes.insert({ author: 'admin', text: '¡Hola! Tenemos disponible consola para entrega inmediata. Compra con Tranquilidad todas nuestras Consolas tienen Garantía de 1 Año. Los accesorios como los controles y demás de la consola tienen garantía de 3 meses. ¡Anímate a Comprar!' })
+
+db.mensajes.insert({ author: 'Pedro', text: 'Una pregunta se puede pagar a cuotas en efecty?' })
+
+db.mensajes.insert({ author: 'admin', text: '¡Hola! Lamentablemente no el sistema no recibe pago a cuotas en efectivo.' })
+
+3) db.productos.find()
+
+4) db.productos.estimatedDocumentCount()
+
+5)
+    a) db.productos.insert({nombre:'PlayStation 5 Console',cateogria:'Videojuegos', stock: 30, precio: 900  })
+    b) 
+        i)Listar los productos con precio menor a 1000 usd.
+        db.productos.find({"precio":{"$lt":1000}})
+
+        ii)Listar los productos con precio entre los 1000 a 3000 usd.
+        db.productos.find({"precio":{"$gte":1000}},{"precio":{"$lte":[1000,3000]}})
+
+        iii)Listar los productos con precio mayor a 3000 usd.
+         db.productos.find({"precio":{"$gt":3000}})
+
+        iv)Realizar una consulta que traiga sólo el nombre del tercer producto más barato.
+
+
+c)Hacer una actualización sobre todos los productos, agregando el campo stock a todos ellos con un valor de 100.
+db.productos.updateMany({"stock":{"$lt":100}},{"$set":{"stock":100}},{"multi":true})
+
+d)Cambiar el stock a cero de los productos con precios mayores a 4000 usd.
+db.productos.updateMany({"precio":{"$gt":4000}},{"$set":{"stock":0}},{"multi":true})
+
+e)Borrar los productos con precio menor a 1000 usd
+db.productos.deleteMany({"precio":{"$lt":1000}})

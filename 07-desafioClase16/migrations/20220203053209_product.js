@@ -5,7 +5,7 @@ exports.up = function (knex) {
 		table.float("price");
 		table.string("thumbnail");
 		table.timestamp("created_at_utc").defaultTo(knex.fn.now());
-		table.timestamp("deleted_at_utc");
+		table.timestamp("updated_at_utc");
 		table.index(["id", "title"], "index_product");
 	});
 };

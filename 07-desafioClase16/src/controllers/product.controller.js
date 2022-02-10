@@ -5,28 +5,31 @@ exports.MostrarFormulario = async (req, res) => {
 };
 
 exports.listaProducto = async (req, res) => {
-	await res.json({ productos: Producto.listarProducto() });
+	const result = await Producto.listarProducto();
+	res.json(result);
 };
 
-exports.nuevoProducto = (req, res) => {
-	// let { toAdd } = req.body;
-	console.log(req.body);
-	// const producto = Producto.nuevoProducto(toAdd);
-	res.status(200);
+exports.nuevoProducto = async (req, res) => {
+	const { title, price, thumbnail } = req.body;
+	const result = await Producto.nuevoProducto(title, price, thumbnail);
+	res.json(result);
 };
 
 exports.mostrarProducto = async (req, res) => {
 	let id = await req.params.id;
-	await res.status(200).json(Producto.mostrarProducto(id));
+	const result = await Producto.mostrarProducto(id);
+	res.status(200).json(result);
 };
 
 exports.actualizarProducto = async (req, res) => {
 	let toChange = await req.body;
 	let id = await req.params.id;
-	await res.status(200).json(Producto.actualizarProducto(toChange, id));
+	const result = await Producto.actualizarProducto(toChange, id);
+	res.status(200).json(result);
 };
 
 exports.eliminarProducto = async (req, res) => {
 	let id = await req.params.id;
-	await res.status(200).json(Producto.eliminarProducto(id));
+	const result = await Producto.eliminarProducto(id);
+	res.status(200).json(result);
 };
